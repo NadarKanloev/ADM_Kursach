@@ -1,15 +1,18 @@
 from tkinter import *
 from tkinter import messagebox
+import math
+import random
 
 
+def shuffle(arr):
+    for i in range(len(arr)-1, 0, -1):
 
-def shuffle():
-    return 0
+        tmp = arr[i]
+        rnd = math.floor((random.uniform(0, 1)) * (i+1))
 
-
-
-
-
+        arr[i] = arr[rnd]
+        arr[rnd] = tmp
+    return arr
 
 root = Tk()
 
@@ -18,8 +21,9 @@ def btn_click():
     Input = f'{str(login)}'
     s = Input.split()
     s_int = [int(item) for item in s]
-    print(sum(s_int))
-    messagebox.showinfo(title='Итог', message=Input)
+    shuffle(s_int)
+    igl = [str(item) for item in s_int]
+    messagebox.showinfo(title='Итог', message=igl)
 
 
 root['bg'] = '#fafafa'   #цвет фона
