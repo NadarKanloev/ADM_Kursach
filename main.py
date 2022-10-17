@@ -1,4 +1,6 @@
-from tkinter import *;
+from tkinter import *
+from tkinter import messagebox
+
 
 
 def shuffle():
@@ -11,6 +13,14 @@ def shuffle():
 
 root = Tk()
 
+def btn_click():
+    login = loginInput.get()
+    Input = f'{str(login)}'
+    s = Input.split()
+    s_int = [int(item) for item in s]
+    print(sum(s_int))
+    messagebox.showinfo(title='Итог', message=Input)
+
 
 root['bg'] = '#fafafa'   #цвет фона
 root.title('Алгоритм Фишера-Йетса')
@@ -22,15 +32,15 @@ root.resizable(width=False, height=False)
 canvas = Canvas(root, height=300, width=250)
 canvas.pack
 
-frame = Frame(root, bg='gray')
+frame = Frame(root, bg='white')
 frame.place(relwidth=1, relheight= 1)
 
-title = Label(frame, text='Ауга', bg='gray', font=40)
+title = Label(frame, text='Ауга', bg='white', font=40)
 title.pack()
-btn = Button(frame, text='Кнопка', bg='yellow')
+btn = Button(frame, text='Кнопка', bg='yellow', command=btn_click)
 btn.pack()
 
 loginInput = Entry(frame, bg='white')
 loginInput.pack()
 
-root.mainloop()
+root.mainloop() #бесконечный цикл для работы программы
